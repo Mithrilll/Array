@@ -9,7 +9,7 @@ class Array
 public:
 	Array();
 	Array(T* arr, size_t n);
-	Array(const Array& object);
+	Array(const Array<T>& object);
 	~Array();
 
 	size_t FindElem(T value);
@@ -27,8 +27,8 @@ public:
 	void ShiftLeft(int ind, int k);
 	void ShiftRight(int ind, int k);
 
-	int Min();
-	int Max();
+	T Min();
+	T Max();
 
 	/*void Fill(int low, int high);
 	void FillAscending(int low, int high);
@@ -188,7 +188,7 @@ void Array<T>::ShiftLeft(int ind, int k)
 	}
 	while (i <= ind)
 	{
-		pArr[i] = 0;
+		pArr[i] = T();
 		i++;
 	}
 }
@@ -207,13 +207,13 @@ void Array<T>::ShiftRight(int ind, int k)
 	}
 	while (i >= ind)
 	{
-		pArr[i] = 0;
+		pArr[i] = T();
 		i--;
 	}
 }
 
 template<typename T>
-int Array<T>::Min()
+T Array<T>::Min()
 {
 	if (!pArr)
 		return 0;
@@ -227,7 +227,7 @@ int Array<T>::Min()
 }
 
 template<typename T>
-int Array<T>::Max()
+T Array<T>::Max()
 {
 	if (!pArr)
 		return 0;
